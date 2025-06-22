@@ -82,7 +82,7 @@ const adminLogin = async (req, res) => {
             const { email, password } = req.body;
     
             if(email === process.env.ADMIN_EMAIL && password === process.env.ADMIN_PASSWORD) {
-                const token = jwt.sign(email+password, process.env.JWT_SECRET, { expiresIn: '1d' });
+                const token = jwt.sign(email+password, process.env.JWT_SECRET);
                 return res.status(200).json({ success: true, token });
             } else {
                 return res.status(400).json({ success: false, message: "Invalid email or password" });
