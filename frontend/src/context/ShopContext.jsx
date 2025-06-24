@@ -160,8 +160,8 @@ export const ShopContextProvider = (props) => {
 
 
 
-    const value = useMemo(() => ({ products, currency, delivery_fee, search, setSearch, showSearch, setShowSearch, cartItems, addToCart, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl, token, setToken }),
-     [products, currency, delivery_fee, search, setSearch, showSearch, setShowSearch, cartItems, addToCart, getCartCount, updateQuantity, getCartAmount, navigate, token, setToken]);
+    const value = useMemo(() => ({ products, currency, delivery_fee, search, setSearch, showSearch, setShowSearch, cartItems, setCartItems ,addToCart, getCartCount, updateQuantity, getCartAmount, navigate, backendUrl, token, setToken }),
+     [products, currency, delivery_fee, search, setSearch, showSearch, setShowSearch, cartItems, addToCart, getCartCount, updateQuantity, getCartAmount, navigate, token, setToken, setCartItems]);
     return (
         <ShopContext.Provider value={value}>
             {props.children}
