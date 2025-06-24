@@ -5,6 +5,7 @@ import connectDB from './config/mongodb.js';
 import connectCloudinary from './config/cloudinary.js';
 import userRouter from './routes/userRoute.js';
 import productRouter from './routes/productRoute.js';
+import cartRouter from './routes/cartRoute.js';
 
 
 //App config
@@ -22,7 +23,7 @@ connectCloudinary();
 // Routes
 app.use('/api/user',userRouter);
 app.use('/api/product', productRouter); // Assuming admin routes are handled in the same router
-
+app.use('/api/cart', cartRouter); 
 
 app.get('/', (req, res) => {
   res.send('Welcome to the backend server!');
