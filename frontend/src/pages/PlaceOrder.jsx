@@ -5,6 +5,7 @@ import stripe_logo from '../assets/frontend_assets/stripe_logo.png'
 import razorpay_logo from '../assets/frontend_assets/razorpay_logo.png'
 import { ShopContext } from '../context/ShopContext';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const PlaceOrder = () => {
 
 
@@ -66,6 +67,22 @@ const PlaceOrder = () => {
                }
 
             break;
+
+            case 'stripe':
+              const responseStripe= await axios.post(backendUrl + '/api/order/stripe', orderData,{headers:{Authorization: `Bearer ${token}`}})
+               if(responseStripe.data.success){
+                const {session_url}= responseStripe.data
+                window.location.replace(session_url)
+               }else{
+                toast.error(responseStripe.data.message)
+               }
+               break;
+
+            case 'razorpay':
+
+
+               break;
+
 
             default:
               break;
